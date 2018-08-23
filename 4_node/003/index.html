@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- ../ 最高到项目根路径 -->
+    <link rel="stylesheet" href="index.css">
+    <title>HTML</title>
+</head>
+<body>
+    <div id="clock"></div>
+    <script>
+        // 跨域：协议 域名 端口号 由一个不相同就是
+        // fetch 基于 promise 的
+        fetch('/clock').then((resp)=>{
+            // console.log(resp.text());
+            // return resp.text();
+            return resp.json(); // 转成想要的结果
+        }, (err) => {}).then((data) => {
+            console.log(data);
+            clock.innerHTML = data.time;
+        })
+        // let xhr = new XMLHttpRequest();
+        // xhr.open('get', '/clock', true);
+        // xhr.onload = function(){
+        //     if(this.status == 200){
+        //         clock.innerHTML = xhr.responseText;
+        //     }
+        // }
+        // xhr.send();
+    </script>
+    
+</body>
+</html>

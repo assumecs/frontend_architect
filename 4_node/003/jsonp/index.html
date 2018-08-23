@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSONP</title>
+</head>
+<body>
+    JSONP 
+    <!-- http-server 8800 server:3000 -->
+    <!-- jsonp script 没有跨域问题 jsonp和ajax json 没关系-->
+    <!-- jsonp 缺点：回调函数必须是全局的 -->
+</body>
+<script>
+    function callback(data) {
+        console.log('callback', data);
+    }
+    // b({a:'abc'})
+    let oScript = document.createElement('script');
+    oScript.src = 'http://localhost:3000/jsonp?cb=callback';
+    document.body.appendChild(oScript);
+</script>
+<!-- <script src="http://localhost:3000/jsonp?cb=c"></script> -->
+</html>

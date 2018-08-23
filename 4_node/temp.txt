@@ -1,0 +1,17 @@
+getui:
+    嘉浩：
+        cid:cf2ef45c3833a3e1d57cb96f1f76c63e
+
+话题：澳洲游
+    topicId:HCTOP00000235
+    commentId:HCCOM00019945
+    commentId:HCCOM00019946
+
+    commentId: HCCOM00019961
+    file:///data/user/0/com.sinosig.khapp/files/cordova-hot-code-push-plugin/20…07.16/www/index.html?id=d3214240c3c09494#/kf/healthO/comment/HCTOP00000235
+
+loginInfo:
+    {"customerNum":"15036870637","loginPwd":"zhouming0116"}
+
+OSS:
+    <Message>The difference between the request time and the current time is too large.</Message>

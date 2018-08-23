@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- ../ 最高到项目根路径 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <title>HTML</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style="margin-top:30px;margin-bottom: 30px;">
+                <div class="col-md-5">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username">
+                </div>
+                <div class="col-md-5">
+                    <label for="text">密码</label>
+                    <input type="text" id="password">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-sm add">添加</button>
+                </div>
+            </div>
+            <ul class="list-group col-md-8 col-md-offset-2">
+                <!-- <li class="list-group-item">
+                    用户名：xxx 密码：xxx   
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    (function(){
+        let oUl = document.querySelector('.list-group'); // 没有 dom 映射
+        let username = document.getElementById('username');
+        let password = document.getElementById('password');
+        let add = document.querySelector('.add'); // 没有 dom 映射
+        let template = function (username, password, id){
+            return `<li class="list-group-item clearfix">
+                    用户名：${username} 密码：${password}
+                    <button class="btn btn-danger btn-xs pull-right remove" data-id="${id}">删除</btn>
+                </li>`;
+        }
+        function render(data) {
+            let str = '';
+            data.forEach(item => {
+                str += template(item.username, item.password, item.id)
+            });
+            oUl.innerHTML = str;
+        }
+        // 1.查询所有用户
+        fetch('/user').then( resp => {
+            return resp.json();
+        }).then(data => {
+            render(data);
+        }).catch(err => {
+            console.log(err);
+        })
+        // 2.添加用户
+        add.addEventListener('click', () => {
+            fetch('/user', {
+                method:'POST',
+                body:JSON.stringify({username:username.value, password:password.value})
+            }).then(resp => {
+                return resp.json();
+            }).then(data => {
+                let oDiv = document.createElement('div');
+                oDiv.innerHTML = template(data.username, data.password, data.id);
+                oUl.appendChild(oDiv.firstElementChild);
+            })
+        }, false)
+        // 3.删除
+        oUl.addEventListener('click', (e) => {
+            if(e.target.tagName === 'BUTTON'){
+                // 如果当前点击的是按钮
+                let id = e.target.dataset.id;
+                fetch('/user?id=' + id, {
+                    method: 'DELETE'
+                }).then(res => {
+                    return res.json();
+                }).then(data => { // 成功后 前台对应删除 dom
+                    oUl.removeChild(e.target.parentNode);
+                })
+            }
+        })
+    })()
+</script>
+</html>

@@ -1,0 +1,49 @@
+Arguments: 
+  /usr/local/Cellar/node/10.7.0/bin/node /usr/local/bin/yarn add jquery
+
+PATH: 
+  /Users/lin/Git/flutter/bin:/Users/lin/Dev/android-sdk/tools:/Users/lin/Dev/android-sdk/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Users/lin/Git/flutter/bin:/Users/lin/Dev/android-sdk/tools:/Users/lin/Dev/android-sdk/platform-tools
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  10.7.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: http://r.cnpmjs.org/jquery/download/jquery-3.3.1.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:138095:19)
+      at Object.onceWrapper (events.js:273:13)
+      at ClientRequest.emit (events.js:182:13)
+      at TLSSocket.emitRequestTimeout (_http_client.js:652:40)
+      at Object.onceWrapper (events.js:273:13)
+      at TLSSocket.emit (events.js:182:13)
+      at TLSSocket.Socket._onTimeout (net.js:448:8)
+      at ontimeout (timers.js:427:11)
+      at tryOnTimeout (timers.js:289:5)
+      at listOnTimeout (timers.js:252:5)
+
+npm manifest: 
+  {
+    "name": "npm",
+    "version": "1.0.0",
+    "description": "",
+    "main": "1.npm.js",
+    "scripts": {
+      "test": "node 1.npm.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

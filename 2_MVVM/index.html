@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MVVM</title>
+</head>
+<body>
+    <!-- MVVM 双向数据绑定 MVVM angular:脏值检查 vue：数据劫持+发布订阅模式 -->
+    <!-- 不兼容低版本 Object.defineProperty -->
+    <script>
+        let obj = {};
+        Object.defineProperty(obj, 'school', {
+            configurable: true,
+            // writable: true, // 与 set 冲突
+            enumerable: true,
+            // value: 'zfpx', // 与 get 冲突
+            get () {
+                // 获取值调用
+                return 'zfpx';
+            },
+            set (val) {
+                // 赋值调用
+                console.log(val);
+            }
+        })
+        // delete obj.school; // configurable
+        // obj.school = 'zfzf'; // writable
+        // console.log(obj);
+        for(let key in obj) {
+            console.log(key);
+        }
+        
+    </script>
+</body>
+</html>
