@@ -18,4 +18,4 @@ reader.on('end', () => {
     console.log('over');
 });
 
-// 14-stream.js 32:32 
+// 14-stream.js 32:32  
