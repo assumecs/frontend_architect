@@ -43,7 +43,7 @@ function LineReader(path, encoding) {
             // 
         }
     });
-
+    // 当你用流去监听数据的时候，当读完后都会发射 end 事件
     this._reader.on('end', () => {
         this.emit('newLine', Buffer.from(buffers).toString(this._encoding))
         this.emit('end');
