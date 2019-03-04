@@ -36,7 +36,13 @@ class WriteStream {
                 chunk,
                 encoding,
                 cb
-            })
+            });
+            let len = chunk.length;
+            // 缓存区的长度加上当前写入的长度
+            this.length += len;
+            // 判断当前最新的缓存区大小是否小于最高水位线
+            let ret = this.length < this.highWaterMark;
+            return ret;
         } else {
             // 在底层写完当前数据后要清空缓存区
             this.writing = true;
